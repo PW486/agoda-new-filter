@@ -1,5 +1,7 @@
 ## 🏨 Agoda New/Reno Filter Bookmarklet
 
+https://github.com/user-attachments/assets/edd2bf73-7a1a-4c07-a129-83b649ecef51
+
 ### ✨ Project Overview
 
 This tool is a simple JavaScript bookmarklet designed to instantly clean up hotel search results on the **Agoda** website. It specifically filters and hides hotel listings that **do not display a "Newly Renovated" or "Newly Built" badge**. This helps users quickly narrow down options to only modern, updated, or recently constructed accommodations.
