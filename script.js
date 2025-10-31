@@ -1,0 +1,1 @@
+javascript:(function(){const hotels=document.querySelectorAll('.PropertyCard');hotels.forEach(hotel=>{if(!hotel.querySelector('div[data-element-name="newly-reno-built-badge"]')){hotel.classList.add('hide');}})})();
