@@ -1,60 +1,44 @@
-## 🏨 Agoda New/Reno Filter Bookmarklet
+# 🏨 Agoda New Filter
 
-### ✨ Project Overview
+Filter Agoda results to show only new & newly renovated stays.
 
-This tool is a simple JavaScript bookmarklet designed to instantly clean up hotel search results on the **Agoda** website. It specifically filters and hides hotel listings that **do not display a "Newly Renovated" or "Newly Built" badge**. This helps users quickly narrow down options to only modern, updated, or recently constructed accommodations.
-
-> 💡 **How it Works**: The script iterates through every visible hotel card on the page. If a card lacks the specific data-element that indicates a recent renovation or new build, the script applies a CSS class to hide that card, removing it from your view.
+> A tiny bookmarklet that hides every listing without the "Newly Built / Renovated" badge.
 
 https://github.com/user-attachments/assets/edd2bf73-7a1a-4c07-a129-83b649ecef51
 
----
+## Features
 
-### 🚀 Installation & Usage
+- One-click filtering on Agoda search results
+- Keeps only places with the New / Newly Renovated badge
+- No extension, no setup — just a bookmark
 
-Follow these steps to install and effectively use the bookmarklet in your browser.
+## Usage
 
-#### 1. Copy the Code
-
-Copy the entire minified JavaScript code below. Ensure the `javascript:` prefix is included.
+**1. Copy the bookmarklet**
 
 ```javascript
 javascript:(function(){const hotels=document.querySelectorAll('.PropertyCard');hotels.forEach(hotel=>{if(!hotel.querySelector('div[data-element-name="newly-reno-built-badge"]')){hotel.classList.add('hide');}})})();
-````
+```
 
-#### 2\. Create the Bookmarklet
+**2. Create a bookmark**
 
-  * **Right-click** on your browser's bookmarks bar and select **"Add Page"** or **"Add Bookmark"**.
-  * **Name:** Give it a clear name (e.g., `Agoda New Filter`).
-  * **URL/Address:** **Paste the entire copied JavaScript code** into the URL or Address field.
-  * **Save** the bookmark.
+Right-click your bookmarks bar → Add Bookmark → Paste the code into the URL field → Save as `Agoda New Filter`
 
-#### 3\. **Crucial Usage Step: Scroll First\!**
+**3. Scroll first (important)**
 
-**You MUST scroll to the bottom of the hotel listing page before running the script.**
+Scroll to the very bottom of the Agoda results page before running it. Agoda lazy-loads listings, so the script can only filter what’s already loaded in the DOM.
 
-  * Agoda loads content dynamically as you scroll (lazy loading).
-  * The script can only process hotel cards that have been loaded into the page's structure (the Document Object Model, or DOM).
-  * Scroll completely down to ensure **all properties** are loaded and available for the script to analyze.
+**4. Click to filter**
 
-#### 4\. Run the Filter
+Click the bookmark. Listings without the badge disappear instantly.
 
-  * Once all hotels are loaded, click the **'Agoda New Filter'** bookmark on your bookmarks bar.
-  * All hotel listings that lack the "Newly Renovated/Built" badge will instantly disappear from the page.
+## How it Works
 
------
+- `document.querySelectorAll('.PropertyCard')` — finds all hotel cards
+- `hotel.querySelector('div[data-element-name="newly-reno-built-badge"]')` — checks for the badge
+- `hotel.classList.add('hide')` — hides cards without it
 
-### 💻 Code Analysis
+## Notes
 
-| Code Snippet | Function |
-| :--- | :--- |
-| `document.querySelectorAll('.PropertyCard')` | Selects all major elements (hotel cards) on the page. |
-| `!hotel.querySelector('div[data-element-name="newly-reno-built-badge"]')` | Checks if the current hotel card **does not** contain the specific badge element used for "Newly Renovated/Built" indicators. |
-| `hotel.classList.add('hide')` | If the badge is absent, the CSS class `hide` is added to the element, concealing it from view. |
-
------
-
-### ⚠️ Compatibility Notes
-
-  * **Action Prerequisite:** The **scroll-down step is mandatory** for the script to process all available listings.
-  * **Website Structure:** This bookmarklet is strictly dependent on **Agoda's current HTML structure** (`.PropertyCard` and `data-element-name="newly-reno-built-badge"`). If Agoda changes these class names or data attributes, the bookmarklet will stop functioning.
+- You need to scroll and load all results before running it
+- Depends on Agoda's current markup (`.PropertyCard` / `newly-reno-built-badge`). May break if Agoda changes its HTML.
